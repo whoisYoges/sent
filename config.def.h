@@ -1,7 +1,7 @@
 /* See LICENSE file for copyright and license details. */
 
 static char *fontfallbacks[] = {
-	"dejavu sans",
+	"Comic Sans MS",
 	"roboto",
 	"ubuntu",
 };
@@ -9,23 +9,23 @@ static char *fontfallbacks[] = {
 #define FONTSZ(x) ((int)(10.0 * powf(1.1288, (x)))) /* x in [0, NUMFONTSCALES-1] */
 
 static const char *colors[] = {
-	"#000000", /* foreground color */
-	"#FFFFFF", /* background color */
+	"#FFFFFF", /* foreground color */
+	"#000000", /* background color */
 };
 
 static const char *inverted_colors[] = {
-	"#FFFFFF", /* foreground color */
-	"#000000", /* background color */
+	"#000000", /* foreground color */
+	"#FFFFFF", /* background color */
 };
 
 static const float linespacing = 1.4;
 
 /* how much screen estate is to be used at max for the content */
-static const float usablewidth = 0.75;
-static const float usableheight = 0.75;
+static const float usablewidth = 0.85;
+static const float usableheight = 0.90;
 
 /* height of the presentation progress bar */
-static const int progressheight = 5;
+static const int progressheight = 4;
 
 static Mousekey mshortcuts[] = {
 	/* button         function        argument */

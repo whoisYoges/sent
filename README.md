@@ -1,59 +1,22 @@
-sent is a simple plaintext presentation tool.
+### My Build of sent:
+Simple plaintext presentation tool cause pptx are just bloats and they suck.
 
-sent does not need latex, libreoffice or any other fancy file format, it uses
-plaintext files to describe the slides and can include images via farbfeld.
-Every paragraph represents a slide in the presentation.
+### Applied Patches
+- [Progress Bar](https://tools.suckless.org/sent/patches/progress-bar/): This patch introduces a progress bar at the very bottom of non-image slides. Similar to the slide numbers patch, it may be useful for an audience to know how much more of a presentation they have to endure. One way of measuring this is to add a bar to the slides which indicate the presenter's progress based on slide count.
 
-The presentation is displayed in a simple X11 window. The content of each slide
-is automatically scaled to fit the window and centered so you also don't have to
-worry about alignment. Instead you can really concentrate on the content.
+- [Inverted Colors](https://tools.suckless.org/sent/patches/inverted-colors/): This patch adds another color scheme. You can switch to that alternate color scheme with the -i flag. You no longer need to recompile sent if you want to present with a different color scheme.
 
+- [Toggle Colorscheme
+](https://tools.suckless.org/sent/patches/toggle-scm/): This patch is meant to be applied on top of [inverted colors](https://tools.suckless.org/sent/patches/inverted-colors/). It adds a new binding, "i", which lets you toggle between the two colorschemes during presentation.
 
-Dependencies
+### Requirements/Dependencies
+- libxft
+- fontconfig
+- libpng
+- Comic Sans Ms font (If you want to use another font edit in the configuration)
+- farbfeld (optional)
 
-You need Xlib and Xft to build sent and the farbfeld[0] tools installed to use
-images in your presentations.
+### Configuration and installation
+Edit config.mk to match your local setup (sent is installed into the /usr/local namespace by default).
 
-Demo
-
-To get a little demo, just type
-
-	make && ./sent example
-
-You can navigate with the arrow keys and quit with `q`.
-
-
-Usage
-
-	sent [FILE]
-
-If FILE is omitted or equals `-`, stdin will be read. Produce image slides by
-prepending a `@` in front of the filename as a single paragraph. Lines starting
-with `#` will be ignored. A `\` at the beginning of the line escapes `@` and
-`#`. A presentation file could look like this:
-
-	sent
-	
-	@nyan.png
-	
-	depends on
-	- Xlib
-	- Xft
-	- farbfeld
-	
-	sent FILENAME
-	one slide per paragraph
-	# This is a comment and will not be part of the presentation
-	\# This and the next line start with backslashes
-	
-	\@FILE.png
-	
-	thanks / questions?
-
-
-Development
-
-sent is developed at http://tools.suckless.org/sent
-
-
-0: http://tools.suckless.org/farbfeld/
+The configuration of sent is done copying [config.def.h](config.def.h) to `config.h`, editing it and then (re)compiling the source code.
